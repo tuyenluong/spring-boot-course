@@ -5,6 +5,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class User {
+
+    private Vehicle vehicle;
+    private String name = "Kaido";
+
     public String getName() {
         return name;
     }
@@ -17,14 +21,14 @@ public class User {
         System.out.println("Hello from the other side");
     }
 
-    private String name = "Kaido";
-
     public Vehicle getVehicle() {
         return vehicle;
     }
 
     @Autowired
-    private Vehicle vehicle;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
 
     @Override
     public String toString(){
