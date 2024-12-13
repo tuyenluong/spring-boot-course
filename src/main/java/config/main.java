@@ -8,6 +8,6 @@ public class main {
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
         User user = context.getBean(User.class);
         System.out.println("User name is: "+ user.getName());
-        user.printHello();
+        System.out.println("Vehicle of the User is: "+ user.getVehicle());
     }
 }

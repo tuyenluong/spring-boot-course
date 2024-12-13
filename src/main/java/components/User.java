@@ -2,7 +2,7 @@ package components;
 
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class User {
     public String getName() {
         return name;
@@ -18,4 +18,18 @@ public class User {
 
     private String name;
 
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    private Vehicle vehicle;
+
+    @Override
+    public String toString(){
+        return "- "+ name;
+    }
 }
