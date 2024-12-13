@@ -1,8 +1,9 @@
 package components;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
+@Component
 public class User {
     public String getName() {
         return name;
@@ -16,16 +17,13 @@ public class User {
         System.out.println("Hello from the other side");
     }
 
-    private String name;
+    private String name = "Kaido";
 
     public Vehicle getVehicle() {
         return vehicle;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
-
+    @Autowired
     private Vehicle vehicle;
 
     @Override

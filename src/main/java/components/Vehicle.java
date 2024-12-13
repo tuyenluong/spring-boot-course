@@ -1,5 +1,8 @@
 package components;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Vehicle {
     public String getName() {
         return name;
@@ -9,7 +12,7 @@ public class Vehicle {
         this.name = name;
     }
 
-    private String name;
+    private String name = "Toyota";
 
     @Override
     public String toString(){
