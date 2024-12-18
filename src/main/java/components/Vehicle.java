@@ -2,7 +2,7 @@ package components;
 
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Vehicle {
     private String name = "Toyota";
 
