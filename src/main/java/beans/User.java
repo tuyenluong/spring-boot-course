@@ -1,7 +1,6 @@
-package components;
+package beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,7 +9,6 @@ public class User {
     private Vehicle vehicle;
     private String name = "Kaido";
 
-    @Autowired
     public User (Vehicle vehicle){
         System.out.println("User bean created by Spring");
         this.vehicle = vehicle;
@@ -32,6 +30,7 @@ public class User {
         return vehicle;
     }
 
+    @Autowired
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
