@@ -5,6 +5,7 @@ import components.Vehicle;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 @ComponentScan("components")
@@ -16,6 +17,7 @@ public class ProjectConfig {
         veh.setName("Audi");
         return veh;
     }
+    @Primary
     @Bean
     Vehicle vehicle2(){
         var veh = new Vehicle();
