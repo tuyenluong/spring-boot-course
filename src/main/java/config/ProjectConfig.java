@@ -11,22 +11,22 @@ import org.springframework.context.annotation.Primary;
 @ComponentScan("components")
 public class ProjectConfig {
 
-    @Bean("Audi")
-    Vehicle vehicle1(){
-        var veh = new Vehicle();
-        veh.setName("Audi");
-        return veh;
-    }
-    @Bean("Honda")
-    Vehicle vehicle2(){
-        var veh = new Vehicle();
-        veh.setName("Honda");
-        return veh;
-    }
-    @Bean("BMW")
-    Vehicle vehicle3(){
-        var veh = new Vehicle();
-        veh.setName("BMW");
-        return veh;
-    }
+//    @Bean("Audi")
+//    Vehicle vehicle1(){
+//        var veh = new Vehicle();
+//        veh.setName("Audi");
+//        return veh;
+//    }
+//    @Bean("Honda")
+//    Vehicle vehicle2(){
+//        var veh = new Vehicle();
+//        veh.setName("Honda");
+//        return veh;
+//    }
+//    @Bean("BMW")
+//    Vehicle vehicle3(){
+//        var veh = new Vehicle();
+//        veh.setName("BMW");
+//        return veh;
+//    }
 }

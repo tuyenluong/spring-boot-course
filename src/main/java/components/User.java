@@ -11,7 +11,7 @@ public class User {
     private String name = "Kaido";
 
     @Autowired
-    public User (@Qualifier("Honda") Vehicle vehicle){
+    public User (Vehicle vehicle){
         System.out.println("User bean created by Spring");
         this.vehicle = vehicle;
     }
