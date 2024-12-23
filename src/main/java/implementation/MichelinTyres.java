@@ -9,8 +9,9 @@ import org.springframework.stereotype.Component;
 public class MichelinTyres implements TyresImp {
 
     @Override
-    public void moveCar() {
+    public String moveCar() {
         System.out.println("Michelin tyres is rotating!!");
+        return null;
     }
 
     @Override

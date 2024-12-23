@@ -9,8 +9,9 @@ import org.springframework.stereotype.Component;
 public class SonySpeaker implements SpeakerImp {
 
     @Override
-    public void makeSound() {
+    public String makeSound() {
         System.out.println("Sony speaker is playing!!");
+        return null;
     }
 
     @Override

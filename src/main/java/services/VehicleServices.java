@@ -18,10 +18,12 @@ import org.springframework.stereotype.Component;
 // - Singleton pattern live in JVM context
 public class VehicleServices {
 
+    @Autowired
     private SpeakerImp speaker;
+    @Autowired
     private TyresImp tyres;
 
-    public SonySpeaker getSpeaker() {
+    public SpeakerImp getSpeaker() {
         return speaker;
     }
     public void playMusic(){
@@ -30,7 +32,7 @@ public class VehicleServices {
     }
 
     public void moveVehicle(){
-        String status = tyres.rotate();
+        String status = tyres.moveCar();
         System.out.println(status);
     }
 
@@ -38,7 +40,6 @@ public class VehicleServices {
         return speaker;
     }
 
-    @Autowired
     public void setSpeakers(SpeakerImp speakers) {
         this.speaker = speakers;
     }
@@ -47,7 +48,6 @@ public class VehicleServices {
         return tyres;
     }
 
-    @Autowired
     public void setTyres(TyresImp tyres) {
         this.tyres = tyres;
     }
