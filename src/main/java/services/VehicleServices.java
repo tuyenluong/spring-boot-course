@@ -1,7 +1,8 @@
 package services;
 
-import implementation.MichelinTyres;
 import implementation.SonySpeaker;
+import interfaces.SpeakerImp;
+import interfaces.TyresImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -17,22 +18,37 @@ import org.springframework.stereotype.Component;
 // - Singleton pattern live in JVM context
 public class VehicleServices {
 
-    private SonySpeaker speaker;
-    private MichelinTyres tyres;
+    private SpeakerImp speaker;
+    private TyresImp tyres;
 
     public SonySpeaker getSpeaker() {
         return speaker;
     }
-    @Autowired
-    public void setSpeaker(SonySpeaker speaker) {
-        this.speaker = speaker;
+    public void playMusic(){
+        String music = speaker.makeSound();
+        System.out.println(music);
     }
 
-    public MichelinTyres getTyres() {
+    public void moveVehicle(){
+        String status = tyres.rotate();
+        System.out.println(status);
+    }
+
+    public SpeakerImp getSpeakers() {
+        return speaker;
+    }
+
+    @Autowired
+    public void setSpeakers(SpeakerImp speakers) {
+        this.speaker = speakers;
+    }
+
+    public TyresImp getTyres() {
         return tyres;
     }
+
     @Autowired
-    public void setTyres(MichelinTyres tyres) {
+    public void setTyres(TyresImp tyres) {
         this.tyres = tyres;
     }
 
