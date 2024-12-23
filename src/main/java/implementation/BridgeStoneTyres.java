@@ -8,7 +8,6 @@ public class BridgeStoneTyres implements TyresImp {
 
     @Override
     public String moveCar() {
-        System.out.println("BridgeStone tyres is rotating!!");
-        return null;
+        return "BridgeStone tyres is rotating!!";
     }
 }

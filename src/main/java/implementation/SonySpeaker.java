@@ -10,8 +10,7 @@ public class SonySpeaker implements SpeakerImp {
 
     @Override
     public String makeSound() {
-        System.out.println("Sony speaker is playing!!");
-        return null;
+        return "Sony speaker is playing!!";
     }
 
     @Override

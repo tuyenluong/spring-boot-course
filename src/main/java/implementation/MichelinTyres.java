@@ -10,8 +10,7 @@ public class MichelinTyres implements TyresImp {
 
     @Override
     public String moveCar() {
-        System.out.println("Michelin tyres is rotating!!");
-        return null;
+        return "Michelin tyres is rotating!!";
     }
 
     @Override

@@ -8,8 +8,7 @@ public class BoseSpeaker implements SpeakerImp {
 
     @Override
     public String makeSound() {
-        System.out.println("Bose speaker is playing!!");
-        return null;
+        return "Bose speaker is playing!!";
     }
 
 }
