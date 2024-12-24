@@ -1,16 +1,19 @@
 package beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("Jeremy") //Eager instantiation when you don't use @Lazy
+@Lazy
 public class User {
 
     private Vehicle vehicle;
     private String name = "Kaido";
 
     public User (Vehicle vehicle){
-        System.out.println("User bean created by Spring");
+        // This String will print before 2 lines in the main class
+        System.out.println("Jeremy bean created by Spring");
         this.vehicle = vehicle;
     }
 

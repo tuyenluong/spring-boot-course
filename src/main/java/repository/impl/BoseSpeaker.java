@@ -1,9 +1,11 @@
 package repository.impl;
 
-import interfaces.SpeakerImp;
+import repository.SpeakerImp;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component("Bose")
+@Primary
 public class BoseSpeaker implements SpeakerImp {
 
     @Override

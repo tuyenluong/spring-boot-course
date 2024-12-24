@@ -1,11 +1,9 @@
 package repository.impl;
 
-import interfaces.SpeakerImp;
-import org.springframework.context.annotation.Primary;
+import repository.SpeakerImp;
 import org.springframework.stereotype.Component;
 
 @Component("Sony")
-@Primary
 public class SonySpeaker implements SpeakerImp {
 
     @Override

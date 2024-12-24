@@ -1,6 +1,6 @@
 package repository.impl;
 
-import interfaces.TyresImp;
+import repository.TyresImp;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package interfaces;
+package repository;
 
 public interface SpeakerImp {
 
