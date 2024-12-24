@@ -1,6 +1,5 @@
 package services;
 
-import implementation.SonySpeaker;
 import interfaces.SpeakerImp;
 import interfaces.TyresImp;
 import org.springframework.beans.factory.annotation.Autowired;

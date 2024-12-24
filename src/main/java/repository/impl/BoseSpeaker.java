@@ -1,4 +1,4 @@
-package implementation;
+package repository.impl;
 
 import interfaces.SpeakerImp;
 import org.springframework.stereotype.Component;

@@ -1,5 +1,3 @@
-import beans.User;
-import beans.Vehicle;
 import config.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import services.VehicleServices;
