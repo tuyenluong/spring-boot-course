@@ -15,6 +15,8 @@ import org.springframework.stereotype.Component;
 // They still do the job of make sure only one object type is existing, but they live in different context.
 // - Singleton in Spring live in Spring Container context.
 // - Singleton pattern live in JVM context
+
+// SCOPE_SINGLETON only suitable for beans which handles service layer, repository layer, business logic to avoid RACE condition
 public class VehicleServices {
 
     @Autowired
