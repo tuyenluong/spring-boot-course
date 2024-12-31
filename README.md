@@ -5,6 +5,7 @@ src
   main
     java
       com.jeremy
+        aop
         base
         config
         controller
