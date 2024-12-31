@@ -17,7 +17,7 @@ public class VehicleStartCheckAspect {
 
     // Pre-method logic only (e.g., logging before execution).
     // Does not support proceed() method
-    // Cannot modify return value
+    // CANNOT modify return value
     @Before("execution(* com.jeremy.services.*.*(..)) && args(vehicleStarted,..)")
     public void log(JoinPoint joinPoint, boolean vehicleStarted) throws Throwable{
         if(!vehicleStarted){
