@@ -1,6 +1,8 @@
 package repository;
 
+import repository.impl.Song;
+
 public interface SpeakerImp {
 
-    String makeSound();
+    String makeSound(Song song);
 }

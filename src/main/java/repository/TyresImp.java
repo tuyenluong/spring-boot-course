@@ -2,5 +2,6 @@ package repository;
 
 public interface TyresImp {
 
-    String moveCar();
+    public String rotate();
+    public String stop();
 }

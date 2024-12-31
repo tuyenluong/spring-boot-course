@@ -4,9 +4,17 @@ import repository.SpeakerImp;
 import repository.TyresImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import repository.impl.Song;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Component
 public class VehicleServices {
+
+    private Logger logger = Logger.getLogger(VehicleServices.class.getName());
 
     private SpeakerImp speaker;
     private TyresImp tyres;
@@ -14,14 +22,59 @@ public class VehicleServices {
     public SpeakerImp getSpeaker() {
         return speaker;
     }
-    public void playMusic(){
-        String music = speaker.makeSound();
-        System.out.println(music);
+
+    // Logger without Aspect Oriented Programming
+    public String playMusic(boolean vehicleStarted, Song song){
+        Instant start = Instant.now();
+        logger.info("method execution start");
+        String music = null;
+        if(vehicleStarted){
+            music = speaker.makeSound(song);
+        }else{
+            logger.log(Level.SEVERE,"Vehicle not started to perform the" +
+                    " operation");
+        }
+        logger.info("method execution end");
+        Instant finish = Instant.now();
+        long timeElapsed = Duration.between(start, finish).toMillis();
+        logger.info("Time took to execute the method : "+timeElapsed);
+        return speaker.makeSound(song);
     }
 
-    public void moveVehicle(){
-        String status = tyres.moveCar();
-        System.out.println(status);
+    // Logger without Aspect Oriented Programming
+    public String moveVehicle(boolean vehicleStarted){
+        Instant start = Instant.now();
+        logger.info("method execution start");
+        String status = null;
+        if(vehicleStarted){
+            status = tyres.rotate();
+        }else{
+            logger.log(Level.SEVERE,"Vehicle not started to perform the" +
+                    " operation");
+        }
+        logger.info("method execution end");
+        Instant finish = Instant.now();
+        long timeElapsed = Duration.between(start, finish).toMillis();
+        logger.info("Time took to execute the method : "+timeElapsed);
+        return tyres.rotate();
+    }
+
+    // Logger without Aspect Oriented Programming
+    public String applyBrake(boolean vehicleStarted){
+        Instant start = Instant.now();
+        logger.info("method execution start");
+        String status = null;
+        if(vehicleStarted){
+            status = tyres.stop();
+        }else{
+            logger.log(Level.SEVERE,"Vehicle not started to perform the" +
+                    " operation");
+        }
+        logger.info("method execution end");
+        Instant finish = Instant.now();
+        long timeElapsed = Duration.between(start, finish).toMillis();
+        logger.info("Time took to execute the method : "+timeElapsed);
+        return tyres.stop();
     }
 
     public SpeakerImp getSpeakers() {

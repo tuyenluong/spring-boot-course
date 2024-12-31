@@ -9,8 +9,10 @@ import org.springframework.stereotype.Component;
 public class BoseSpeaker implements SpeakerImp {
 
     @Override
-    public String makeSound() {
-        return "Bose speaker is playing!!";
+    public String makeSound(Song song) {
+        return "Playing the song "+ song.getTitle()+ " by "
+                + song.getSingerName()+
+                " with Bose speakers";
     }
 
 }

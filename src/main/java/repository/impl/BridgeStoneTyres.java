@@ -7,7 +7,12 @@ import org.springframework.stereotype.Component;
 public class BridgeStoneTyres implements TyresImp {
 
     @Override
-    public String moveCar() {
-        return "BridgeStone tyres is rotating!!";
+    public String rotate(){
+        return "Vehicle moving with the help of BridgeStone tyres";
+    }
+
+    @Override
+    public String stop() {
+        return "Vehicle stopped with the help of BridgeStone tyres";
     }
 }
