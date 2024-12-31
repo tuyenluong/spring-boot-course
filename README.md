@@ -1,6 +1,4 @@
-
 ## Spring Boot project structure
-
 ```yaml
 src
   main
@@ -21,4 +19,5 @@ src
           implementation
 ```
 
-## 
+## Commits
+- Each commit will be one lesson that I've learn and implemented
