@@ -1,5 +1,6 @@
 package com.jeremy.services;
 
+import com.jeremy.repository.LogAspect;
 import com.jeremy.repository.SpeakerImp;
 import com.jeremy.repository.TyresImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,39 +17,24 @@ public class VehicleServices {
         return speaker;
     }
 
-    // Logger with Aspect Oriented Programming
+    // Logger using AOP
+    // Vehicle started validation using AOP
+    @LogAspect
     public String playMusic(boolean vehicleStarted, Song song){
-//        String music = null;
-//        if(vehicleStarted){
-//            music = speaker.makeSound(song);
-//        }else{
-//            logger.log(Level.SEVERE,"Vehicle not started to perform the" +
-//                    " operation");
-//        }
         return speaker.makeSound(song);
     }
 
-    // Logger with Aspect Oriented Programming
+    // Logger using AOP
+    // Vehicle started validation using AOP
+    @LogAspect
     public String moveVehicle(boolean vehicleStarted){
-//        String status = null;
-//        if(vehicleStarted){
-//            status = tyres.rotate();
-//        }else{
-//            logger.log(Level.SEVERE,"Vehicle not started to perform the" +
-//                    " operation");
-//        }
         return tyres.rotate();
     }
 
-    // Logger with Aspect Oriented Programming
+    // Logger using AOP
+    // Vehicle started validation using AOP
+    @LogAspect
     public String applyBrake(boolean vehicleStarted){
-//        String status = null;
-//        if(vehicleStarted){
-//            status = tyres.stop();
-//        }else{
-//            logger.log(Level.SEVERE,"Vehicle not started to perform the" +
-//                    " operation");
-//        }
         return tyres.stop();
     }
 
