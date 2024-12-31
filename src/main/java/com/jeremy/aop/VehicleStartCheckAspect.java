@@ -18,7 +18,7 @@ public class VehicleStartCheckAspect {
     // Pre-method logic only (e.g., logging before execution).
     // Does not support proceed() method
     // CANNOT modify return value
-    @Before("execution(* com.jeremy.services.*.*(..)) && args(vehicleStarted,..)")
+    @Before("@annotation(com.jeremy.repository.VehicleCheckAspect) && args(vehicleStarted,..)")
     public void log(JoinPoint joinPoint, boolean vehicleStarted) throws Throwable{
         if(!vehicleStarted){
             throw new RuntimeException("Vehicle not started yet");

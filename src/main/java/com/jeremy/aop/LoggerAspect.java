@@ -24,17 +24,17 @@ public class LoggerAspect {
     // Full control over pre- and post-method logic; can modify behavior/results
     // Support proceed() method
     // CAN modify return value
-    @Around("execution(* com.jeremy.services.*.*(..))")
-    public Object log(ProceedingJoinPoint joinPoint) throws Throwable{
-        logger.info(joinPoint.getSignature().toLongString()+ " method execution start");
-        Instant start = Instant.now();
-        Object result = joinPoint.proceed();
-        Instant finish = Instant.now();
-        long timeElapsed = Duration.between(start,finish).toMillis();
-        logger.info("Time took to execute the method in mile seconds: "+timeElapsed);
-        logger.info(joinPoint.getSignature().toLongString() + " method execution end.");
-        return result;
-    }
+//    @Around("execution(* com.jeremy.services.*.*(..))")
+//    public Object log(ProceedingJoinPoint joinPoint) throws Throwable{
+//        logger.info(joinPoint.getSignature().toLongString()+ " method execution start");
+//        Instant start = Instant.now();
+//        Object result = joinPoint.proceed();
+//        Instant finish = Instant.now();
+//        long timeElapsed = Duration.between(start,finish).toMillis();
+//        logger.info("Time took to execute the method in mile seconds: "+timeElapsed);
+//        logger.info(joinPoint.getSignature().toLongString() + " method execution end.");
+//        return result;
+//    }
 
     // Full control over pre- and post-method logic; can modify behavior/results
     // Support proceed() method
@@ -54,7 +54,7 @@ public class LoggerAspect {
     // Logic that executes when a method throws an exception.
     // Does not support proceed() method
     // CANNOT modify return value
-    @AfterThrowing(value = "execution(* com.jeremy.services.*.*(..))",throwing = "ex")
+    @AfterThrowing(value = "@annotation(com.jeremy.repository.LogAspect)",throwing = "ex")
     public void logException(JoinPoint joinPoint, Exception ex) {
         logger.log(Level.SEVERE,joinPoint.getSignature()+ " An exception thrown with the help of" +
                 " @AfterThrowing which happened due to : "+ex.getMessage());
@@ -63,7 +63,7 @@ public class LoggerAspect {
     // Logic that executes when a method throws an exception.
     // Does not support proceed() method
     // CAN modify return value
-    @AfterReturning(value = "execution(* com.jeremy.services.*.*(..))",returning = "retVal")
+    @AfterReturning(value = "@annotation(com.jeremy.repository.LogAspect)",returning = "retVal")
     public void logStatus(JoinPoint joinPoint,Object retVal) {
         logger.log(Level.INFO,joinPoint.getSignature()+ " Method successfully processed with the status " +
                 retVal.toString());
