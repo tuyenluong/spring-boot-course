@@ -55,13 +55,13 @@ The scope determines how and when a bean instance is created.
 
 ## Bean Lifecycle
 1. Initialization:
-   2. Spring creates and initializes the bean. 
-   3. If a bean has dependencies, they are injected during initialization.
+   1. Spring creates and initializes the bean. 
+   2. If a bean has dependencies, they are injected during initialization.
 2. Custom Initialization and Destruction:
-   3. Implement custom behavior using:
-      4. @PostConstruct: Runs after the bean is initialized. 
-      5. @PreDestroy: Runs before the bean is destroyed. 
-   4. Example:
+   1. Implement custom behavior using:
+      1. @PostConstruct: Runs after the bean is initialized. 
+      2. @PreDestroy: Runs before the bean is destroyed. 
+   2. Example:
 ```java
 @Component
 public class MyService {
@@ -77,8 +77,8 @@ public class MyService {
 }
 ```
 3. Lifecycle Callbacks:
-   4. You can implement the InitializingBean and DisposableBean interfaces for more granular control. 
-   5. Example:
+   1. You can implement the InitializingBean and DisposableBean interfaces for more granular control. 
+   2. Example:
 ```java
 public class MyService implements InitializingBean, DisposableBean {
     public void afterPropertiesSet() {
