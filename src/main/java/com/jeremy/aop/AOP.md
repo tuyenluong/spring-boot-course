@@ -37,5 +37,15 @@ Here:
 - The @Before advice logs information before any method in the com.example.service package executes.
 - This reduces the need to add logging code manually in every method.
 ---
+## Differences between Advices
+| **Advice**         | **Use Case**                                                                 | **Supports `proceed()`?** | **Can Modify Return Value?** |
+|---------------------|-----------------------------------------------------------------------------|---------------------------|-----------------------------|
+| `@Before`          | Pre-method logic only (e.g., logging before execution).                     | ❌                        | ❌                          |
+| `@After`           | Post-method logic only (e.g., cleanup actions after execution).             | ❌                        | ❌                          |
+| `@AfterThrowing`   | Logic that executes when a method throws an exception.                     | ❌                        | ❌                          |
+| `@AfterReturning`  | Logic that executes after successful method execution; can access the result. | ❌                        | ✅                          |
+| `@Around`          | Full control over pre- and post-method logic; can modify behavior/results.  | ✅                        | ✅                          |
+| **Introduction**     | Dynamically add methods or interfaces to existing classes.                  | N/A                       | N/A                         |
+---
 ## Conclusion:
 The statement is accurate. AOP is designed to handle non-core business logic (cross-cutting concerns) efficiently, promoting cleaner, more maintainable code by separating these concerns from the core functionality.

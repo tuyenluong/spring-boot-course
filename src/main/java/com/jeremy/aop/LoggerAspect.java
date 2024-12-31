@@ -16,13 +16,14 @@ public class LoggerAspect {
     private Logger logger = Logger.getLogger(LoggerAspect.class.getName());
 
     @Around("execution(* com.jeremy.services.*.*(..))")
-    public void log(ProceedingJoinPoint joinPoint) throws Throwable{
+    public Object log(ProceedingJoinPoint joinPoint) throws Throwable{
         logger.info(joinPoint.getSignature().toLongString()+ " method execution start");
         Instant start = Instant.now();
-        joinPoint.proceed();
+        Object result = joinPoint.proceed();
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start,finish).toMillis();
         logger.info("Time took to execute the method in mile seconds: "+timeElapsed);
         logger.info(joinPoint.getSignature().toLongString() + " method execution end.");
+        return result;
     }
 }

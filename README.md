@@ -20,4 +20,4 @@ src
 ```
 
 ## Commits
-- Each commit will be one lesson that I've learn and implemented
+- Each commit will be one lesson that I've learned and implemented
