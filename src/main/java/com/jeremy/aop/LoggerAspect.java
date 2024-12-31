@@ -3,6 +3,7 @@ package com.jeremy.aop;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
@@ -11,10 +12,14 @@ import java.util.logging.Logger;
 
 @Aspect
 @Component
+@Order(2) // Control the order of which Aspect will run first in Spring context
 public class LoggerAspect {
 
     private Logger logger = Logger.getLogger(LoggerAspect.class.getName());
 
+    // Full control over pre- and post-method logic; can modify behavior/results
+    // Support proceed() method
+    // Can modify return value
     @Around("execution(* com.jeremy.services.*.*(..))")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable{
         logger.info(joinPoint.getSignature().toLongString()+ " method execution start");
