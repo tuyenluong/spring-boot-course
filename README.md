@@ -1,10 +1,5 @@
 
-Table of content
-
-Table of content
-- [Spring Boot project structure](##section-1)
-
-## <a name="section-1"></a> Spring Boot project structure
+## Spring Boot project structure
 
 ```yaml
 src
