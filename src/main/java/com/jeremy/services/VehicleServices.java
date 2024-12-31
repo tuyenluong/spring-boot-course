@@ -1,10 +1,10 @@
-package services;
+package com.jeremy.services;
 
-import repository.SpeakerImp;
-import repository.TyresImp;
+import com.jeremy.repository.SpeakerImp;
+import com.jeremy.repository.TyresImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import repository.impl.Song;
+import com.jeremy.repository.impl.Song;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

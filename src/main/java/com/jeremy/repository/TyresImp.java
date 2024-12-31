@@ -1,4 +1,4 @@
-package repository;
+package com.jeremy.repository;
 
 public interface TyresImp {
 

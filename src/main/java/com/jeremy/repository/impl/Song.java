@@ -1,4 +1,4 @@
-package repository.impl;
+package com.jeremy.repository.impl;
 
 public class Song {
     private String title;

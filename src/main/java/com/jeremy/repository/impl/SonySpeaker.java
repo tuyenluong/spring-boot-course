@@ -1,12 +1,10 @@
-package repository.impl;
+package com.jeremy.repository.impl;
 
-import repository.SpeakerImp;
-import org.springframework.context.annotation.Primary;
+import com.jeremy.repository.SpeakerImp;
 import org.springframework.stereotype.Component;
 
-@Component("Bose")
-@Primary
-public class BoseSpeaker implements SpeakerImp {
+@Component("Sony")
+public class SonySpeaker implements SpeakerImp {
 
     @Override
     public String makeSound(Song song) {
@@ -15,4 +13,8 @@ public class BoseSpeaker implements SpeakerImp {
                 " with Bose speakers";
     }
 
+    @Override
+    public String toString(){
+        return "- "+ "This is Sony speaker";
+    }
 }

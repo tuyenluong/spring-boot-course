@@ -1,8 +1,8 @@
-package beans;
+package com.jeremy.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import services.VehicleServices;
+import com.jeremy.services.VehicleServices;
 
 @Component
 public class Vehicle {

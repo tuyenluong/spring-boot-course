@@ -1,4 +1,4 @@
-package beans;
+package com.jeremy.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -12,7 +12,7 @@ public class User {
     private String name = "Kaido";
 
     public User (Vehicle vehicle){
-        // This String will print before 2 lines in the main class
+        // This String will print before 2 lines in the com.jeremy.main class
         System.out.println("Jeremy bean created by Spring");
         this.vehicle = vehicle;
     }

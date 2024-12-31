@@ -1,8 +1,9 @@
-import beans.User;
-import config.ProjectConfig;
+package com.jeremy;
+
+import com.jeremy.config.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import repository.impl.Song;
-import services.VehicleServices;
+import com.jeremy.repository.impl.Song;
+import com.jeremy.services.VehicleServices;
 
 public class main {
     public static void main(String[] args) {
