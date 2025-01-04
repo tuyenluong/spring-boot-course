@@ -17,6 +17,15 @@ src
           implementation
         service
           implementation
+        JeremySpringCourse.java
+    resources
+      static
+      templates
+      application.properties
+  test
+    java
+      com.jeremy
+        JeremySpringCourseTests.java
 ```
 
 ## Commits
