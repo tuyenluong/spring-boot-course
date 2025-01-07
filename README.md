@@ -20,6 +20,11 @@ src
         JeremySpringCourse.java
     resources
       static
+        assets
+          css
+          images
+          js
+          webfonts
       templates
       application.properties
   test
