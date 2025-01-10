@@ -1,14 +1,14 @@
 package com.jeremy.services;
 
 import com.jeremy.model.Contact;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class ContactServices {
 
-    private static final Logger log = LoggerFactory.getLogger(ContactServices.class);
+//    private static final Logger log = LoggerFactory.getLogger(ContactServices.class);
 
     public boolean saveMessageDetails(Contact contact){
         boolean isSaved = true;
