@@ -32,7 +32,7 @@ public class ContactController {
 
     @RequestMapping("/contact")
     public String displayContactPage(Model model){
-        model.addAttribute("contract", new Contact());
+        model.addAttribute("contact", new Contact());
         return "contact.html";
     }
 
