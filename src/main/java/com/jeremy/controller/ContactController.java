@@ -4,8 +4,6 @@ import com.jeremy.model.Contact;
 import com.jeremy.services.ContactServices;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,6 +52,8 @@ public class ContactController {
             return "contact.html";
         }
         contactServices.saveMessageDetails(contact);
+        contactServices.setCounter(contactServices.getCounter()+1);
+        log.info("Number of times the Contact form is submitted: " + contactServices.getCounter());
         return "redirect:/contact";
     }
 }
