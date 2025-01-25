@@ -5,11 +5,13 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.annotation.SessionScope;
 
 @Service
 @Slf4j
-@RequestScope
 @Data
+//@RequestScope
+@SessionScope
 public class ContactServices {
 
     private int counter = 0;
