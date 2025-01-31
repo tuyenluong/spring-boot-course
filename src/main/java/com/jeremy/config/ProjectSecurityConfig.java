@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -25,15 +28,22 @@ public class ProjectSecurityConfig {
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults());
 
-        // Permit all requests inside the web application
-//        http.authorizeHttpRequests(request -> request.anyRequest().permitAll())
-//                .formLogin(Customizer.withDefaults())
-//                .httpBasic(Customizer.withDefaults());
-
-        // Deny all requests inside the web application
-//        http.authorizeHttpRequests(request -> request.anyRequest().denyAll())
-//                .formLogin(Customizer.withDefaults())
-//                .httpBasic(Customizer.withDefaults());
         return http.build();
+    }
+
+    @Bean
+    public InMemoryUserDetailsManager userDetailsManager(){
+        // User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+        UserDetails user = User.withDefaultPasswordEncoder()
+                .username("user")
+                .password("123456")
+                .roles("USER")
+                .build();
+        UserDetails admin = User.withDefaultPasswordEncoder()
+                .username("admin")
+                .password("654321")
+                .roles("USER","ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(user,admin);
     }
 }
