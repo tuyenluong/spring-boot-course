@@ -16,7 +16,7 @@ public class ProjectSecurityConfig {
     @Bean
     public SecurityFilterChain projectSecurity(HttpSecurity http) throws Exception{
         // Custom security for each request
-        http.csrf(AbstractHttpConfigurer::disable)
+        http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg"))
                 .authorizeHttpRequests(request ->
                         request.requestMatchers("/", "/home").permitAll()
                                 .requestMatchers("/dashboard").authenticated()
