@@ -7,7 +7,10 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class Contact {
+public class Contact extends BaseEntity {
+
+    private int contactId;
+    private String status;
 
     /*
     * @NotNull: Checks if a given field is not null but allows empty values & zero elements inside collections.
