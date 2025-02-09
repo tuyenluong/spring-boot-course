@@ -1,8 +1,10 @@
 package com.jeremy.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class Holiday {
 
     private final String day;

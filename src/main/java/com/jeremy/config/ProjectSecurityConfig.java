@@ -1,10 +1,12 @@
 package com.jeremy.config;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -16,7 +18,8 @@ public class ProjectSecurityConfig {
     @Bean
     public SecurityFilterChain projectSecurity(HttpSecurity http) throws Exception{
         // Custom security for each request
-        http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg"))
+        http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg")
+                        .ignoringRequestMatchers(PathRequest.toH2Console()))
                 .authorizeHttpRequests(request ->
                         request.requestMatchers("/", "/home").permitAll()
                                 .requestMatchers("/dashboard").authenticated()
@@ -26,13 +29,14 @@ public class ProjectSecurityConfig {
                                 .requestMatchers("/courses").permitAll()
                                 .requestMatchers("/about").permitAll()
                                 .requestMatchers("/login").permitAll()
+                                .requestMatchers(PathRequest.toH2Console()).permitAll()
                                 .requestMatchers("/assets/**").permitAll())
                 .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
                         .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll())
                 .logout(logoutConfigurer -> logoutConfigurer.logoutSuccessUrl("/login?logout=true")
                         .invalidateHttpSession(true).permitAll())
                 .httpBasic(Customizer.withDefaults());
-
+        http.headers(header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
         return http.build();
     }
 
