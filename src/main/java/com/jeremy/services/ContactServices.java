@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -34,5 +35,18 @@ public class ContactServices {
             isSaved=true;
         }
         return isSaved;
+    }
+
+    public List<Contact> findMsgsWithOpenStatus(){
+        return contactRepository.findMsgsWithStatus(JeremySpringSchoolConstants.OPEN);
+    }
+
+    public boolean updateMsgStatus(int contactId, String updatedBy){
+        boolean isUpdated = false;
+        int result = contactRepository.updateMsgStatus(contactId,JeremySpringSchoolConstants.CLOSE, updatedBy);
+        if(result>0) {
+            isUpdated = true;
+        }
+        return isUpdated;
     }
 }
