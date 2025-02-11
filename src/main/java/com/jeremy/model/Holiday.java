@@ -1,15 +1,15 @@
 package com.jeremy.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-@AllArgsConstructor
-public class Holiday {
+public class Holiday extends BaseEntity {
 
-    private final String day;
-    private final String reason;
-    private final Type type;
+    private String day;
+    private String reason;
+    private Type type;
 
     public enum Type{
         FESTIVAL, FEDERAL
