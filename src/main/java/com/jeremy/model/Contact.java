@@ -1,5 +1,6 @@
 package com.jeremy.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -7,8 +8,13 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
+@Entity
+@Table
 public class Contact extends BaseEntity {
 
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @Id
+    @Column(name = "contact_id")
     private int contactId;
     private String status;
 
