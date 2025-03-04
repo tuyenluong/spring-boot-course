@@ -11,6 +11,7 @@ import org.springframework.web.context.annotation.ApplicationScope;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -30,21 +31,28 @@ public class ContactServices {
         contact.setStatus(JeremySpringSchoolConstants.OPEN);
         contact.setCreatedBy(JeremySpringSchoolConstants.ANONYMOUS);
         contact.setCreatedAt(LocalDateTime.now());
-        int result = contactRepository.saveContactMsg(contact);
-        if (result > 0){
+        Contact result = contactRepository.save(contact);
+        if (result != null && result.getContactId() > 0){
             isSaved=true;
         }
         return isSaved;
     }
 
     public List<Contact> findMsgsWithOpenStatus(){
-        return contactRepository.findMsgsWithStatus(JeremySpringSchoolConstants.OPEN);
+        return contactRepository.findByStatus(JeremySpringSchoolConstants.OPEN);
     }
 
     public boolean updateMsgStatus(int contactId, String updatedBy){
         boolean isUpdated = false;
-        int result = contactRepository.updateMsgStatus(contactId,JeremySpringSchoolConstants.CLOSE, updatedBy);
-        if(result>0) {
+
+        Optional<Contact> contactOptional = contactRepository.findById(contactId);
+        contactOptional.ifPresent(contact -> {
+            contact.setStatus(JeremySpringSchoolConstants.CLOSE);
+            contact.setUpdatedBy(updatedBy);
+            contact.setUpdatedAt(LocalDateTime.now());
+        });
+        Contact result = contactRepository.save(contactOptional.get());
+        if(result != null && result.getUpdatedBy() != null) {
             isUpdated = true;
         }
         return isUpdated;
