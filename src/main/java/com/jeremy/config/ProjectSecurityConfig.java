@@ -21,11 +21,10 @@ public class ProjectSecurityConfig {
 
         http.csrf((csrf) -> csrf.ignoringRequestMatchers("/saveMsg")
                         .ignoringRequestMatchers(PathRequest.toH2Console()))
-                .authorizeHttpRequests((requests) ->
-                        requests.requestMatchers("/dashboard").authenticated()
-                        .requestMatchers("/displayMessages").hasRole("ADMIN")
-                        .requestMatchers("/closeMsg/**").hasRole("ADMIN")
-                        .requestMatchers("/", "/home").permitAll()
+                .authorizeHttpRequests((requests) -> requests.requestMatchers("/dashboard").authenticated()
+                                .requestMatchers("/displayMessages").hasAuthority("ROLE_ADMIN")
+                                .requestMatchers("/closeMsg/**").hasAuthority("ROLE_ADMIN")
+                                .requestMatchers("/", "/home").permitAll()
                         .requestMatchers("/holidays/**").permitAll()
                         .requestMatchers("/contact").permitAll()
                         .requestMatchers("/saveMsg").permitAll()
@@ -34,11 +33,14 @@ public class ProjectSecurityConfig {
                         .requestMatchers("/assets/**").permitAll()
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/logout").permitAll()
+                        .requestMatchers("/favicon.ico", "/index.php/apps/files/preview-service-worker.js").permitAll()
                         .requestMatchers(PathRequest.toH2Console()).permitAll())
+
                 .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
-                        .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll())
+                        .defaultSuccessUrl("/dashboard")
+                        .failureUrl("/login?error=true"))
                 .logout(logoutConfigurer -> logoutConfigurer.logoutSuccessUrl("/login?logout=true")
-                        .invalidateHttpSession(true).permitAll())
+                        .invalidateHttpSession(true))
                 .httpBasic(Customizer.withDefaults());
 
         http.headers(headersConfigurer -> headersConfigurer
@@ -50,7 +52,6 @@ public class ProjectSecurityConfig {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
-
         UserDetails user = User.withDefaultPasswordEncoder()
                 .username("user")
                 .password("12345")

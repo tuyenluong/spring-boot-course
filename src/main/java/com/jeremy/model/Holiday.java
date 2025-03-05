@@ -11,6 +11,7 @@ import lombok.EqualsAndHashCode;
 public class Holiday extends BaseEntity {
 
     @Id
+    @Column(name = "holidays_day")
     private String day;
     private String reason;
     @Enumerated(EnumType.STRING)

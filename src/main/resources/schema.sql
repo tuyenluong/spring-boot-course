@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
 );
 
 CREATE TABLE IF NOT EXISTS `holidays` (
-  `day` varchar(255) NOT NULL,
+  `holidays_day` varchar(255) NOT NULL,
   `reason` varchar(100) NOT NULL,
   `type` varchar(20) NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
