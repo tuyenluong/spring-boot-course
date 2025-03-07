@@ -21,3 +21,33 @@ INSERT INTO `holidays` (`holidays_day`,`reason`,`type`,`created_at`, `created_by
 
 INSERT INTO `holidays` (`holidays_day`,`reason`,`type`,`created_at`, `created_by`)
   VALUES (' Nov 11 ','Veterans Day','FEDERAL',CURDATE(),'DBA');
+
+INSERT INTO `contact` (`status`, `name`,`mobile_num`,`email`,`subject`, `message`, `created_at`, `created_by`)
+  VALUES ('Open', 'tuyen','0123456789','1jeremy@jeremyluong.com','Complain','Karens complain', CURDATE(),'DBA');
+
+INSERT INTO `contact` (`status`,`name`,`mobile_num`,`email`, `subject`, `message`,`created_at`, `created_by`)
+  VALUES ( 'Open', 'tuyen','0123456789','2jeremy@jeremyluong.com','Complain','Karens complain', CURDATE(),'DBA');
+
+INSERT INTO `contact` (`status`, `name`,`mobile_num`,`email`,`subject`, `message`, `created_at`, `created_by`)
+  VALUES ('Open', 'tuyen','0123456789','3jeremy@jeremyluong.com','Complain','Karens complain', CURDATE(),'DBA');
+
+INSERT INTO `contact` (`status`,`name`,`mobile_num`,`email`, `subject`, `message`,`created_at`, `created_by`)
+  VALUES ( 'Open', 'tuyen','0123456789','4jeremy@jeremyluong.com','Complain','Karens complain', CURDATE(),'DBA');
+
+INSERT INTO `contact` (`status`, `name`,`mobile_num`,`email`,`subject`, `message`, `created_at`, `created_by`)
+  VALUES ('Open', 'tuyen','0123456789','5jeremy@jeremyluong.com','Complain','Karens complain', CURDATE(),'DBA');
+
+INSERT INTO `contact` (`status`,`name`,`mobile_num`,`email`, `subject`, `message`,`created_at`, `created_by`)
+  VALUES ( 'Open', 'tuyen','0123456789','6jeremy@jeremyluong.com','Complain','Karens complain', CURDATE(),'DBA');
+
+INSERT INTO `contact` (`status`, `name`,`mobile_num`,`email`,`subject`, `message`, `created_at`, `created_by`)
+  VALUES ('Open', 'tuyen','0123456789','7jeremy@jeremyluong.com','Complain','Karens complain', CURDATE(),'DBA');
+
+INSERT INTO `contact` (`status`,`name`,`mobile_num`,`email`, `subject`, `message`,`created_at`, `created_by`)
+  VALUES ( 'Open', 'tuyen','0123456789','8jeremy@jeremyluong.com','Complain','Karens complain', CURDATE(),'DBA');
+
+INSERT INTO `contact` (`status`, `name`,`mobile_num`,`email`,`subject`, `message`, `created_at`, `created_by`)
+  VALUES ('Open', 'tuyen','0123456789','9jeremy@jeremyluong.com','Complain','Karens complain', CURDATE(),'DBA');
+
+INSERT INTO `contact` (`status`,`name`,`mobile_num`,`email`, `subject`, `message`,`created_at`, `created_by`)
+  VALUES ( 'Open', 'tuyen','0123456789','10jeremy@jeremyluong.com','Complain','Karens complain', CURDATE(),'DBA');

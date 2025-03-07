@@ -12,10 +12,11 @@ import lombok.Data;
 @Table
 public class Contact extends BaseEntity {
 
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "contact_id")
     private int contactId;
+
     private String status;
 
     /*
