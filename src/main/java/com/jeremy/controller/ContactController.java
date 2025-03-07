@@ -5,7 +5,6 @@ import com.jeremy.services.ContactServices;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -51,7 +50,7 @@ public class ContactController {
     }
 
     @RequestMapping("/displayMessages")
-    public ModelAndView displayMessages(Model model) {
+    public ModelAndView displayMessages() {
         List<Contact> contactMsgs = contactServices.findMsgsWithOpenStatus();
         ModelAndView modelAndView = new ModelAndView("messages.html");
         modelAndView.addObject("contactMsgs",contactMsgs);
@@ -59,8 +58,8 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/closeMsg",method = GET)
-    public String closeMsg(@RequestParam int id, Authentication authentication) {
-        contactServices.updateMsgStatus(id,authentication.getName());
+    public String closeMsg(@RequestParam int id) {
+        contactServices.updateMsgStatus(id);
         return "redirect:/displayMessages";
     }
 }

@@ -25,8 +25,6 @@ public class ContactServices {
     public boolean saveMessageDetails(Contact contact){
         boolean isSaved = false;
         contact.setStatus(JeremySpringSchoolConstants.OPEN);
-        contact.setCreatedBy(JeremySpringSchoolConstants.ANONYMOUS);
-        contact.setCreatedAt(LocalDateTime.now());
         Contact result = contactRepository.save(contact);
         if (result != null && result.getContactId() > 0){
             isSaved=true;
@@ -38,14 +36,12 @@ public class ContactServices {
         return contactRepository.findByStatus(JeremySpringSchoolConstants.OPEN);
     }
 
-    public boolean updateMsgStatus(int contactId, String updatedBy){
+    public boolean updateMsgStatus(int contactId){
         boolean isUpdated = false;
 
         Optional<Contact> contactOptional = contactRepository.findById(contactId);
         contactOptional.ifPresent(contact -> {
             contact.setStatus(JeremySpringSchoolConstants.CLOSE);
-            contact.setUpdatedBy(updatedBy);
-            contact.setUpdatedAt(LocalDateTime.now());
         });
         Contact result = contactRepository.save(contactOptional.get());
         if(result != null && result.getUpdatedBy() != null) {
