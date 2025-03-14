@@ -40,7 +40,7 @@ public class LoggerAspect {
     // Support proceed() method
     // CAN modify return value
     // But use Annotation to locate
-    @Around("@annotation(com.jeremy.aop.LogAspect)")
+    @Around("@annotation(com.jeremy.controller)")
     public void logWithAnnotation(ProceedingJoinPoint joinPoint) throws Throwable {
         logger.info(joinPoint.toString() + " method execution start");
         Instant start = Instant.now();
@@ -54,7 +54,7 @@ public class LoggerAspect {
     // Logic that executes when a method throws an exception.
     // Does not support proceed() method
     // CANNOT modify return value
-    @AfterThrowing(value = "@annotation(com.jeremy.aop.LogAspect)",throwing = "ex")
+    @AfterThrowing(value = "@annotation(com.jeremy.controller)",throwing = "ex")
     public void logException(JoinPoint joinPoint, Exception ex) {
         logger.log(Level.SEVERE,joinPoint.getSignature()+ " An exception thrown with the help of" +
                 " @AfterThrowing which happened due to : "+ex.getMessage());
@@ -63,7 +63,7 @@ public class LoggerAspect {
     // Logic that executes when a method throws an exception.
     // Does not support proceed() method
     // CAN modify return value
-    @AfterReturning(value = "@annotation(com.jeremy.aop.LogAspect)",returning = "retVal")
+    @AfterReturning(value = "@annotation(com.jeremy.controller)",returning = "retVal")
     public void logStatus(JoinPoint joinPoint,Object retVal) {
         logger.log(Level.INFO,joinPoint.getSignature()+ " Method successfully processed with the status " +
                 retVal.toString());
