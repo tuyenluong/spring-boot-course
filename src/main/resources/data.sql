@@ -1,5 +1,5 @@
 INSERT INTO `holidays` (`holidays_day`,`reason`,`type`,`created_at`, `created_by`)
- VALUES ('Jan 1','New Year''s Day','FESTIVAL',CURDATE(),'DBA');
+ VALUES ('Jan 1','New Year Day','FESTIVAL',CURDATE(),'DBA');
 
 INSERT INTO `holidays` (`holidays_day`,`reason`,`type`,`created_at`, `created_by`)
  VALUES ('Oct 31','Halloween','FESTIVAL',CURDATE(),'DBA');
