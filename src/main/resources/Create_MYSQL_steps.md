@@ -5,8 +5,13 @@
 5. alter user 'root'@'localhost' identified by '123456';
 6. FLUSH PRIVILEGES;
 7. Restart container again and check the root user with new password from step 5
-8. Create new user: CREATE USER 'jeremy'@'172.17.0.1' IDENTIFIED BY '123456';
-9. Connect with the new user and host.
+8. Create new user: CREATE USER 'jeremy'@'localhost' IDENTIFIED BY '123456';
+9. Based on the scripts.sql follow steps below to generate data:
+   1. CREATE DATABASE IF NOT EXISTS security_db; only for root user 
+   2. USE security_db; only for root user
+   3. CREATE TABLE IF NOT EXISTS customer - only for root user
+11. Test connect with the new user and host with Spring setup: USER 'jeremy'@'localhost' IDENTIFIED BY '123456';
+12. 
 
 
 
