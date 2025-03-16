@@ -14,31 +14,29 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class ProjectSecurityConfig {
 
+    private static final String[] PUBLIC_PATH = new String[]{"/", "/home","/contact","/contact",
+            "/saveMsg","/courses","/assets/**","/login","/logout","/public/**","/favicon.ico",
+            "/index.php/apps/files/preview-service-worker.js"};
+
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 
         http.csrf((csrf) -> csrf.ignoringRequestMatchers("/saveMsg")
-                        .ignoringRequestMatchers(PathRequest.toH2Console()))
+                        .ignoringRequestMatchers(PathRequest.toH2Console())
+                        .ignoringRequestMatchers("/public/**"))
                 .authorizeHttpRequests((requests) -> requests.requestMatchers("/dashboard").authenticated()
-                                .requestMatchers("/displayMessages").hasAuthority("ROLE_ADMIN")
-                                .requestMatchers("/closeMsg/**").hasAuthority("ROLE_ADMIN")
-                                .requestMatchers("/", "/home").permitAll()
-                        .requestMatchers("/holidays/**").permitAll()
-                        .requestMatchers("/contact").permitAll()
-                        .requestMatchers("/saveMsg").permitAll()
-                        .requestMatchers("/courses").permitAll()
-                        .requestMatchers("/about").permitAll()
-                        .requestMatchers("/assets/**").permitAll()
-                        .requestMatchers("/login").permitAll()
-                        .requestMatchers("/logout").permitAll()
-                        .requestMatchers("/favicon.ico", "/index.php/apps/files/preview-service-worker.js").permitAll()
-                        .requestMatchers(PathRequest.toH2Console()).permitAll())
+                        .requestMatchers("/displayMessages").hasAuthority("ROLE_ADMIN")
+                        .requestMatchers("/closeMsg/**").hasAuthority("ROLE_ADMIN")
+                        .requestMatchers(PathRequest.toH2Console()).permitAll()
+                        .requestMatchers(PUBLIC_PATH).permitAll())
 
                 .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
                         .defaultSuccessUrl("/dashboard")
                         .failureUrl("/login?error=true"))
+
                 .logout(logoutConfigurer -> logoutConfigurer.logoutSuccessUrl("/login?logout=true")
                         .invalidateHttpSession(true))
+
                 .httpBasic(Customizer.withDefaults());
 
         http.headers(headersConfigurer -> headersConfigurer
