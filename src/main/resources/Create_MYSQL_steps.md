@@ -1,19 +1,86 @@
-1. docker pull library/mysql:latest
-2. docker run --name=mysqlUser -p 3305:3306 -e MYSQL_RANDOM_ROOT_PASSWORD=true -e MYSQL_AUTHENTICATION_PLUGIN=caching_sha2_password -e MYSQLEXIT -d library/mysql:latest
-3. docker logs mysqlUser
-4. Get the GENERATED PASSWORD for the root user
-5. docker exec -it mysqlUser sh
-6. mysql -u root -p
-7. Enter GENERATED PASSWORD after get the logs from 'docker logs mysqlUser'
-8. alter user 'root'@'localhost' identified by '123456';
-9. FLUSH PRIVILEGES;
-10. Restart container again and check the root user with new password from step 5 (docker restart mysqlUser)
-11. CREATE USER 'jeremy'@'%' IDENTIFIED BY '123456'; 
-12. GRANT ALL PRIVILEGES ON *.* TO 'jeremy'@'%';
-12. ALTER USER 'jeremy'@'%' IDENTIFIED WITH caching_sha2_password BY '123456';
-13. FLUSH PRIVILEGES;
-13. Based on the scripts.sql follow steps below to generate data:
-   1. CREATE DATABASE IF NOT EXISTS <db_name>; only for root user
-   2. USE <db_name>; only for root user
-15. Test connect with the new user and host with Spring setup: USER 'jeremy'@'localhost' IDENTIFIED BY '123456';
+# 🚀 Setting Up MySQL in Docker & Configuring User Access
 
+## 🛠 1. Pull the Latest MySQL Image
+```sh
+docker pull library/mysql:latest
+```
+
+## 🚀 2. Run MySQL Container
+```sh
+docker run --name=mysqlUser -p 3305:3306 \
+  -e MYSQL_RANDOM_ROOT_PASSWORD=true \
+  -e MYSQL_AUTHENTICATION_PLUGIN=caching_sha2_password \
+  -e MYSQLEXIT -d library/mysql:latest
+```
+
+## 📝 3. Check MySQL Logs
+```sh
+docker logs mysqlUser
+```
+This will display the **generated root password**.
+
+## 🔑 4. Get the Generated Password for Root User
+Copy the **generated password** from the logs.
+
+## 🎥 5. Enter the MySQL Container Shell
+```sh
+docker exec -it mysqlUser sh
+```
+
+## 🔗 6. Connect to MySQL
+```sh
+mysql -u root -p
+```
+📌 **Enter the generated password** when prompted.
+
+## 🔄 7. Change Root Password
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
+FLUSH PRIVILEGES;
+```
+
+## 🔄 8. Restart the Container & Verify Root Login
+```sh
+docker restart mysqlUser
+docker exec -it mysqlUser sh
+mysql -u root -p
+```
+📌 Use the new password (`123456`) from Step 7.
+
+---
+
+## 👤 9. Create a New User (`jeremy`)
+```sql
+CREATE USER 'jeremy'@'%' IDENTIFIED BY '123456';
+GRANT ALL PRIVILEGES ON *.* TO 'jeremy'@'%';
+ALTER USER 'jeremy'@'%' IDENTIFIED WITH caching_sha2_password BY '123456';
+FLUSH PRIVILEGES;
+```
+
+---
+
+## 📁 10. Generate Database & Data (Based on `scripts.sql`)
+```sql
+-- Only for root user
+CREATE DATABASE IF NOT EXISTS <db_name>;
+USE <db_name>;
+```
+
+---
+
+## 🤍 11. Test Connection with Spring Boot
+Update `application.properties`:
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3305/<db_name>
+spring.datasource.username=jeremy
+spring.datasource.password=123456
+```
+
+Test MySQL connection:
+```sql
+USER 'jeremy'@'localhost' IDENTIFIED BY '123456';
+```
+
+---
+
+## 🎉 **Done! Your MySQL setup in Docker is now ready for Spring Boot.**
