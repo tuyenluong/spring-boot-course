@@ -5,6 +5,8 @@ import com.jeremy.services.ContactServices;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -50,10 +52,13 @@ public class ContactController {
     }
 
     @RequestMapping("/displayMessages")
-    public ModelAndView displayMessages() {
-        List<Contact> contactMsgs = contactServices.findMsgsWithOpenStatus();
+    public ModelAndView displayMessages(@RequestParam(defaultValue = "0") int page,
+                                        @RequestParam(defaultValue = "10") int size) {
+        Page<Contact> contactMsgs = contactServices.findMsgsWithOpenStatus(PageRequest.of(page, size));
         ModelAndView modelAndView = new ModelAndView("messages.html");
-        modelAndView.addObject("contactMsgs",contactMsgs);
+        modelAndView.addObject("contactMsgs", contactMsgs.getContent()); // Pass paginated data
+        modelAndView.addObject("currentPage", page);
+        modelAndView.addObject("totalPages", contactMsgs.getTotalPages());
         return modelAndView;
     }
 

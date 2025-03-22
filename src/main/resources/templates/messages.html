@@ -34,13 +34,13 @@
 <!-- //inner banner -->
 
 <div class="site-section">
-
     <div class="table-responsive-md">
         <div class="row mb-4">
             <div class="col-md-7">
                 <h3 class="heading-21921">Open Contact Messages</h3>
             </div>
         </div>
+
         <table class="table table-striped table-hover">
             <thead class="table-dark">
             <tr>
@@ -63,13 +63,22 @@
             </tr>
             </tbody>
         </table>
+
+        <!-- Pagination Controls -->
+        <div class="d-flex justify-content-between mt-3">
+            <a th:if="${currentPage > 0}" th:href="@{/displayMessages(page=${currentPage - 1}, size=10)}" class="btn btn-secondary">Previous</a>
+            <span>Page <span th:text="${currentPage + 1}"></span> of <span th:text="${totalPages}"></span></span>
+            <a th:if="${currentPage + 1 < totalPages}" th:href="@{/displayMessages(page=${currentPage + 1}, size=10)}" class="btn btn-secondary">Next</a>
+        </div>
     </div>
-    <div class="col-md-2 login-center text-start">
+
+    <div class="col-md-2 login-center text-start mt-3">
         <a th:href="@{/dashboard}">
             <button class="btn btn-style btn-style-3 text-left">BACK</button>
         </a>
     </div>
 </div>
+
 
 <!-- footer block -->
 <div th:replace="~{footer :: footer}">...</div>

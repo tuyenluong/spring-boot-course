@@ -6,6 +6,8 @@ import com.jeremy.repository.ContactRepository;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
 
@@ -32,8 +34,8 @@ public class ContactServices {
         return isSaved;
     }
 
-    public List<Contact> findMsgsWithOpenStatus(){
-        return contactRepository.findByStatus(JeremySpringSchoolConstants.OPEN);
+    public Page<Contact> findMsgsWithOpenStatus(Pageable pageable){
+        return (Page<Contact>) contactRepository.findByStatus(JeremySpringSchoolConstants.OPEN, pageable);
     }
 
     public boolean updateMsgStatus(int contactId){

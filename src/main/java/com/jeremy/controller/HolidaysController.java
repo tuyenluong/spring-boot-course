@@ -26,10 +26,16 @@ public class HolidaysController {
         if(null != display && display.equals("all")){
             model.addAttribute("festival",true);
             model.addAttribute("federal",true);
+            model.addAttribute("cultural",true);
+            model.addAttribute("religious",true);
         }else if(null != display && display.equals("federal")){
             model.addAttribute("federal",true);
         }else if(null != display && display.equals("festival")){
             model.addAttribute("festival",true);
+        }else if(null != display && display.equals("cultural")){
+            model.addAttribute("cultural",true);
+        }else if(null != display && display.equals("religious")){
+            model.addAttribute("religious",true);
         }
         Iterable<Holiday> holidays = holidaysRepository.findAll();
         List<Holiday> holidayList = StreamSupport.stream(holidays.spliterator(), false).toList();
