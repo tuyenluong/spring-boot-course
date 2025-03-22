@@ -1,5 +1,5 @@
---create database spring_boot_school;
---use spring_boot_school;
+--CREATE DATABASE spring_db;
+--USE spring_db;
 
 CREATE TABLE IF NOT EXISTS `contact` (
   `contact_id` int AUTO_INCREMENT  PRIMARY KEY,
