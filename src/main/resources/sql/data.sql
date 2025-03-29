@@ -1,3 +1,5 @@
+--https://bcrypt-generator.com/
+
 -- Insert international holidays into the holidays table
 INSERT INTO `holidays` (`holidays_day`, `reason`, `type`, `created_at`, `created_by`)
 VALUES
