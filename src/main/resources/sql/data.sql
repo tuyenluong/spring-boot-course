@@ -1,5 +1,10 @@
 --https://bcrypt-generator.com/
 
+-- Ensure roles exist
+INSERT INTO `roles` (`role_name`, `created_at`, `created_by`)
+VALUES ('ADMIN', CURDATE(), 'DBA'),
+       ('STUDENT', CURDATE(), 'DBA');
+
 -- Insert international holidays into the holidays table
 INSERT INTO `holidays` (`holidays_day`, `reason`, `type`, `created_at`, `created_by`)
 VALUES
