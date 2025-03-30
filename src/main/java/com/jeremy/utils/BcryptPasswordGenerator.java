@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class BcryptPasswordGenerator {
-    private static final int NUM_PASSWORDS = 1_000_000;
+    private static final int NUM_PASSWORDS = 700_000;
     private static final int THREAD_COUNT = 10;  // Use 10 threads for parallel processing
     private static final String PASSWORD = "password123";
     private static final String CSV_FILE = "hashed_passwords.csv";
