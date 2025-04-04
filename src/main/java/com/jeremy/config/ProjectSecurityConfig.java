@@ -20,13 +20,15 @@ public class ProjectSecurityConfig {
             "/saveMsg","/courses","/assets/**","/login","/logout","/public/**","/favicon.ico",
             "/index.php/apps/files/preview-service-worker.js"};
 
+    private static final String[] AUTHENTICATED_PATH = new String[]{"/dashboard", "/displayProfile", "/updateProfile"};
+
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 
         http.csrf((csrf) -> csrf.ignoringRequestMatchers("/saveMsg")
                         .ignoringRequestMatchers(PathRequest.toH2Console())
                         .ignoringRequestMatchers("/public/**"))
-                .authorizeHttpRequests((requests) -> requests.requestMatchers("/dashboard").authenticated()
+                .authorizeHttpRequests((requests) -> requests.requestMatchers(AUTHENTICATED_PATH).authenticated()
                         .requestMatchers("/displayMessages").hasAuthority("ROLE_ADMIN")
                         .requestMatchers("/closeMsg/**").hasAuthority("ROLE_ADMIN")
                         .requestMatchers(PathRequest.toH2Console()).permitAll()
