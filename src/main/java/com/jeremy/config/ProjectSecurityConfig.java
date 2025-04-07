@@ -21,6 +21,7 @@ public class ProjectSecurityConfig {
             "/index.php/apps/files/preview-service-worker.js"};
 
     private static final String[] AUTHENTICATED_PATH = new String[]{"/dashboard", "/displayProfile", "/updateProfile"};
+    private static final String[] ADMIN_PATH = new String[]{"/displayMessages", "/closeMsg/**", "/admin/**"};
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
@@ -29,8 +30,7 @@ public class ProjectSecurityConfig {
                         .ignoringRequestMatchers(PathRequest.toH2Console())
                         .ignoringRequestMatchers("/public/**"))
                 .authorizeHttpRequests((requests) -> requests.requestMatchers(AUTHENTICATED_PATH).authenticated()
-                        .requestMatchers("/displayMessages").hasAuthority("ROLE_ADMIN")
-                        .requestMatchers("/closeMsg/**").hasAuthority("ROLE_ADMIN")
+                        .requestMatchers(ADMIN_PATH).hasAuthority("ROLE_ADMIN")
                         .requestMatchers(PathRequest.toH2Console()).permitAll()
                         .requestMatchers(PUBLIC_PATH).permitAll())
 
