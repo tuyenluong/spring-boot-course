@@ -35,7 +35,7 @@ public class ContactServices {
     }
 
     public Page<Contact> findMsgsWithOpenStatus(Pageable pageable){
-        return (Page<Contact>) contactRepository.findByStatus(JeremySpringSchoolConstants.OPEN, pageable);
+        return contactRepository.findByStatus(JeremySpringSchoolConstants.OPEN, pageable);
     }
 
     public boolean updateMsgStatus(int contactId){

@@ -19,19 +19,18 @@ public class ProjectSecurityConfig {
     private static final String[] PUBLIC_PATH = new String[]{"/", "/home","/contact","/holidays/*",
             "/saveMsg","/courses","/assets/**","/login","/logout","/public/**","/favicon.ico",
             "/index.php/apps/files/preview-service-worker.js"};
-
     private static final String[] AUTHENTICATED_PATH = new String[]{"/dashboard", "/displayProfile", "/updateProfile"};
     private static final String[] ADMIN_PATH = new String[]{"/displayMessages", "/closeMsg/**", "/admin/**"};
+    private static final String[] STUDENT_PATH = new String[]{"/student/**"};
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 
         http.csrf((csrf) -> csrf.ignoringRequestMatchers("/saveMsg")
-                        .ignoringRequestMatchers(PathRequest.toH2Console())
                         .ignoringRequestMatchers("/public/**"))
                 .authorizeHttpRequests((requests) -> requests.requestMatchers(AUTHENTICATED_PATH).authenticated()
                         .requestMatchers(ADMIN_PATH).hasAuthority("ROLE_ADMIN")
-                        .requestMatchers(PathRequest.toH2Console()).permitAll()
+                        .requestMatchers(STUDENT_PATH).hasAuthority("ROLE_STUDENT")
                         .requestMatchers(PUBLIC_PATH).permitAll())
 
                 .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
