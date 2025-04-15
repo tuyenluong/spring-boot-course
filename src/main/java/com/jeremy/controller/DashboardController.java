@@ -28,4 +28,6 @@ public class DashboardController {
         session.setAttribute("loggedInPerson", person);
         return "dashboard.html";
     }
+
+
 }   

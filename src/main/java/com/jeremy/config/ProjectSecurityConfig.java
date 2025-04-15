@@ -20,7 +20,7 @@ public class ProjectSecurityConfig {
             "/saveMsg","/courses","/assets/**","/login","/logout","/public/**","/favicon.ico",
             "/index.php/apps/files/preview-service-worker.js"};
     private static final String[] AUTHENTICATED_PATH = new String[]{"/dashboard", "/displayProfile", "/updateProfile"};
-    private static final String[] ADMIN_PATH = new String[]{"/displayMessages", "/closeMsg/**", "/admin/**"};
+    private static final String[] ADMIN_PATH = new String[]{"/displayMessages/**", "/closeMsg/**", "/admin/**"};
     private static final String[] STUDENT_PATH = new String[]{"/student/**"};
 
     @Bean
