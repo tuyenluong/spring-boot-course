@@ -80,6 +80,37 @@ Run the following query to check if the data was successfully imported:
 SELECT * FROM hashed_passwords LIMIT 10;
 ```
 
+## **Step 7: Drop person table if exists user record**
+
+```sql
+TRUNCATE  TABLE person_courses;
+SET foreign_key_checks = 0;
+TRUNCATE  TABLE person;
+SET foreign_key_checks = 1;
+
+DROP TABLE person_courses;
+DROP TABLE person;
+```
+
+## **Step 8: Load all records from hashed password table as your new users**
+
+```sql
+INSERT INTO person (name, email, mobile_number, pwd, role_id, address_id, created_at, created_by)
+SELECT 
+    CONCAT('User', hp.id) AS name,
+    CONCAT('user', hp.id, '@example.com') AS email,
+    LPAD(7000000000 + hp.id, 10, '0') AS mobile_number,
+    hp.password_hash AS pwd,
+    1 AS role_id,
+    NULL AS address_id,
+    hp.created_at AS created_at,
+    'DBA' AS created_by
+FROM hashed_passwords hp;
+```
+```sql
+select * from person where role_id=1 limit 10;
+```
+
 ## **Troubleshooting**
 
 ### 1. If You Get **`ERROR 1290 (HY000): The MySQL server is running with the --secure-file-priv option so it cannot execute this statement`**

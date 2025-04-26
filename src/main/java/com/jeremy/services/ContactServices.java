@@ -13,8 +13,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
 
-import java.util.Optional;
-
 @Service
 @Slf4j
 @Data
@@ -46,13 +44,8 @@ public class ContactServices {
 
     public boolean updateMsgStatus(int contactId){
         boolean isUpdated = false;
-
-        Optional<Contact> contactOptional = contactRepository.findById(contactId);
-        contactOptional.ifPresent(contact -> {
-            contact.setStatus(JeremySpringSchoolConstants.CLOSE);
-        });
-        Contact result = contactRepository.save(contactOptional.get());
-        if(result != null && result.getUpdatedBy() != null) {
+        int rows = contactRepository.updateMsgStatusNative(JeremySpringSchoolConstants.CLOSE,contactId);
+        if(rows > 0) {
             isUpdated = true;
         }
         return isUpdated;
