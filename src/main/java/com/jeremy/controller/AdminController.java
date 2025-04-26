@@ -166,8 +166,7 @@ public class AdminController {
         courses.getPersons().remove(person);
         personRepository.save(person.get());
         session.setAttribute("courses",courses);
-        ModelAndView modelAndView = new
+        return new
                 ModelAndView("redirect:/admin/viewStudents?id="+courses.getCourseId());
-        return modelAndView;
     }
 }
