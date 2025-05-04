@@ -5,9 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -16,9 +13,6 @@ public class ProjectSecurityConfig {
     private static final String[] PUBLIC_PATH = new String[]{"/", "/home","/contact","/holidays/*",
             "/saveMsg","/courses","/assets/**","/login","/logout","/public/**","/favicon.ico",
             "/index.php/apps/files/preview-service-worker.js"};
-    private static final String[] AUTHENTICATED_PATH = new String[]{"/dashboard", "/displayProfile", "/updateProfile"};
-    private static final String[] ADMIN_PATH = new String[]{"/displayMessages/**", "/closeMsg/**", "/admin/**"};
-    private static final String[] STUDENT_PATH = new String[]{"/student/**"};
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
@@ -44,10 +38,4 @@ public class ProjectSecurityConfig {
         return http.build();
 
     }
-
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
 }
