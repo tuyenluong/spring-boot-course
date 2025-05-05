@@ -1,2 +1,0 @@
-- Spring JDBC without Spring Boot will need to declare JDBCTemplate bean, DataSource bean
-- Spring JDBC with Spring Boot will do that automatically
